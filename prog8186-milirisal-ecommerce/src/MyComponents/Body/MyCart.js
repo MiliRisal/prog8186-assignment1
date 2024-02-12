@@ -34,7 +34,7 @@ function MyCart() {
             }}
           >
             {" "}
-            Checkout{" "}
+            Finalize Sale{" "}
           </button>
         </div>
       ) : (

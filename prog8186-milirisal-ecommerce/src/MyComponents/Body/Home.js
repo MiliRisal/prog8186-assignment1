@@ -15,7 +15,7 @@ function Home() {
                 <Card.Img variant="top" src={product.productImage} />
                 <Card.Body>
                   <Card.Title>{product.productName}</Card.Title>
-                  <Card.Text>{product.price}</Card.Text>
+                  <Card.Text>Price: $ {product.price}</Card.Text>
                   <Button
                     variant="primary"
                     onClick={() => addToCart(product.id)}
