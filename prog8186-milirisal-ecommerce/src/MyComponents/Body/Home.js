@@ -1,29 +1,32 @@
-import { Container } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Button from "react-bootstrap/Button";
-import tshirt from "../Body/tshirt.jpg";
+import React, { useContext } from "react";
+import { Container, Card, Col, Row, Button } from "react-bootstrap";
+import { ProductList } from "../../Products";
+import { ShopContext } from "./ShopContext";
 function Home() {
+  const { addToCart, cartItems } = useContext(ShopContext);
   return (
     <Container className="m-5">
       <Row xs={1} md={3} className="g-4">
-        {Array.from({ length: 9 }).map((_, idx) => (
-          <Col key={idx}>
-            <Card>
-              <Card.Img variant="top" src={tshirt} />
-              <Card.Body>
-                <Card.Title>Cagdyuisuydfu</Card.Title>
-                <Card.Text>
-                  This is a longer card with supporting t ext below as a natural
-                  lead-in to additional content. This content is a little bit
-                  longer.
-                </Card.Text>
-                <Button variant="primary">Add to cart</Button>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
+        {ProductList.map((product) => {
+          const cartItemCount = cartItems[product.id] || 0;
+          return (
+            <Col key={product.id}>
+              <Card>
+                <Card.Img variant="top" src={product.productImage} />
+                <Card.Body>
+                  <Card.Title>{product.productName}</Card.Title>
+                  <Card.Text>{product.price}</Card.Text>
+                  <Button
+                    variant="primary"
+                    onClick={() => addToCart(product.id)}
+                  >
+                    Add to cart {cartItemCount > 0 && <> ({cartItemCount})</>}
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          );
+        })}
       </Row>
     </Container>
   );
