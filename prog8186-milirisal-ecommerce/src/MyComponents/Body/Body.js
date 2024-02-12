@@ -1,9 +1,9 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Home from "./Home";
 import ProductDetail from "./ProductDetail";
-import MyAccount from "./MyAccount";
 import MyCart from "./MyCart";
+import Home from "./Home";
+import { MyAccount } from "./MyAccount";
 
 function Body() {
   return (
