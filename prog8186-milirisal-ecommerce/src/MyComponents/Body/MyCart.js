@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
 import { ShopContext } from "./ShopContext";
-import { ProductList } from "../../Products";
 import { CartItem } from "./CartItem";
 import { useNavigate } from "react-router-dom";
 import "./MyCart.css";
+
 function MyCart() {
-  const { cartItems, getTotalCartAmount, checkout } = useContext(ShopContext);
+  const { cartItems, getTotalCartAmount, checkout, products } =
+    useContext(ShopContext);
   const totalAmount = getTotalCartAmount();
 
   const navigate = useNavigate();
@@ -16,10 +17,18 @@ function MyCart() {
         <h1>Your Cart Items</h1>
       </div>
       <div className="cart">
-        {ProductList.map((product) => {
-          if (cartItems[product.id] !== 0) {
-            return <CartItem data={product} />;
+        {products.map((product) => {
+          const cartItemCount = cartItems[product.id] || 0;
+          if (cartItemCount > 0) {
+            return (
+              <CartItem
+                key={product.id}
+                data={product}
+                quantity={cartItemCount}
+              />
+            );
           }
+          return null;
         })}
       </div>
 

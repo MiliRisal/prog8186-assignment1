@@ -68,3 +68,37 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# Project Structure
+
+- _database (MongoDB Atlas)_
+- _server (nodejs express)_
+- _client (react web application)_
+
+## Mongodb (Database)
+
+- _Database: shop_
+- _Database schema:_
+  - products (\_id, description, image, pricing, shippingCost)
+  - users (\_id, email, password, username, purchaseHistory, shippingAddress)
+  - orders (\_id, products { product, quantity}, user )
+
+## Nodejs Express (Back-end)
+
+- _Framework: Express_
+- _Other Dependencies: body-parser, mongoose, cors_
+- _Port: 5000_
+- _Folder Structure:_
+  - models
+    - product.js
+    - user.js
+    - order.js
+  - routes
+    - productRoutes.js
+    - userRoutes.js
+    - orderRoutes.js
+  - api.js
+  - mongodb.js
+  - index.js
+
+## React Application (Front-end)
