@@ -5,7 +5,7 @@
 To Run the Front end of the app, open the terminal and enter 
 >npm i
 >npm start
->
+
 To Run the back end, 
 >nodemon app
 
